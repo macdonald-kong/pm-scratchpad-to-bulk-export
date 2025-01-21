@@ -1,0 +1,365 @@
+{
+	"version": 1,
+	"collections": [
+		{
+			"id": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+			"uid": "0-c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+			"name": "Employees Directory Scratchpad",
+			"description": null,
+			"auth": null,
+			"events": null,
+			"variables": [],
+			"order": [],
+			"folders_order": [
+				"7cce7fed-5618-4c45-b167-01191f9ee798",
+				"19f002c5-ef98-44c1-815c-81726b0ac3ce"
+			],
+			"protocolProfileBehavior": {},
+			"createdAt": "2025-01-20T16:47:16.755Z",
+			"folders": [
+				{
+					"id": "19f002c5-ef98-44c1-815c-81726b0ac3ce",
+					"uid": "0-19f002c5-ef98-44c1-815c-81726b0ac3ce",
+					"name": "Employees Directory Service",
+					"description": "_Kong Insomnia demonstration_",
+					"auth": null,
+					"events": null,
+					"collection": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+					"folder": null,
+					"order": [
+						"4cd8c9ed-b47b-45d8-b4f2-5aa495d2aee1",
+						"2fc57b68-4f10-458a-8ba7-46251d225719",
+						"c50b8e91-e8a1-4b5a-921b-a11f5cb6aea6"
+					],
+					"folders_order": [],
+					"owner": "0",
+					"protocolProfileBehavior": {},
+					"createdAt": "2025-01-20T16:47:16.757Z",
+					"collectionId": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+					"folderId": "19f002c5-ef98-44c1-815c-81726b0ac3ce"
+				},
+				{
+					"id": "7cce7fed-5618-4c45-b167-01191f9ee798",
+					"uid": "0-7cce7fed-5618-4c45-b167-01191f9ee798",
+					"name": "Okta",
+					"description": null,
+					"auth": null,
+					"events": null,
+					"collection": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+					"folder": null,
+					"order": [
+						"0e592193-9f7f-45b7-9b7b-c7d370fa1cbe"
+					],
+					"folders_order": [],
+					"owner": "0",
+					"protocolProfileBehavior": {},
+					"createdAt": "2025-01-20T16:47:16.757Z",
+					"collectionId": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+					"folderId": "7cce7fed-5618-4c45-b167-01191f9ee798"
+				}
+			],
+			"requests": [
+				{
+					"id": "0e592193-9f7f-45b7-9b7b-c7d370fa1cbe",
+					"uid": "0-0e592193-9f7f-45b7-9b7b-c7d370fa1cbe",
+					"name": "Get Token",
+					"url": "{{okta_scheme}}{{okta_domain}}/oauth2/default/v1/token",
+					"description": "Generated from cURL: curl -s -X POST https://dev-redacted.okta.com/oauth2/default/v1/token -H \"content-type: application/x-www-form-urlencoded\" -H \"accept: application/x-www-form-urlencoded, application/json\" -H \"Authorization: Basic MG9hOHQ5ZHlyOTQ3TEdrYTc1ZDc6ZFNFMHVNd3l6SnlaQllieURrX3VnNGVMblNHaUVpVDlJUnQzNkk5aA==\" -d \"grant_type=client_credentials&scope=read%3Aemployees\"",
+					"data": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "read:employees",
+							"type": "text"
+						}
+					],
+					"dataOptions": null,
+					"dataMode": "urlencoded",
+					"headerData": [
+						{
+							"key": "content-type",
+							"value": "application/x-www-form-urlencoded"
+						},
+						{
+							"key": "accept",
+							"value": "application/x-www-form-urlencoded, application/json"
+						},
+						{
+							"key": "Authorization",
+							"value": "Basic {{okta_auth}}"
+						}
+					],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "7cce7fed-5618-4c45-b167-01191f9ee798",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+					"headers": "content-type: application/x-www-form-urlencoded\naccept: application/x-www-form-urlencoded, application/json\nAuthorization: Basic {{okta_auth}}\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "2fc57b68-4f10-458a-8ba7-46251d225719",
+					"uid": "0-2fc57b68-4f10-458a-8ba7-46251d225719",
+					"name": "Create Employee",
+					"url": "{{service_scheme}}{{service_subdomain}}.{{service_domain}}/api/employees",
+					"description": "Generated from cURL: curl -s -X POST http://demo.redacted.com/api/employees -H \"Authorization: Bearer $TOKEN\" -d '{\"id\": \"15\",\"name\": \"Jane Doe\",\"jobTitle\": \"Solutions Engineer\",\"email\": \"email.com\"}'",
+					"data": [],
+					"dataOptions": {
+						"raw": {
+							"language": "json"
+						}
+					},
+					"dataMode": "raw",
+					"headerData": [
+						{
+							"key": "Authorization",
+							"value": "Bearer {{access_token}}"
+						}
+					],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Check if status is 201', () => {",
+									" pm.expect(pm.response.code).to.eql(201);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"id": "3b08e96b-faf9-48b9-883f-e9df080e58f3"
+							}
+						}
+					],
+					"folder": "19f002c5-ef98-44c1-815c-81726b0ac3ce",
+					"responses_order": [],
+					"preRequestScript": null,
+					"tests": "pm.test('Check if status is 201', () => {\n pm.expect(pm.response.code).to.eql(201);\n});",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+					"rawModeData": "{\n    \"id\": \"1234\",\n    \"name\": \"John Doe\",\n    \"jobTitle\": \"Solutions Engineer\",\n    \"email\": \"john@email.com\"\n}",
+					"headers": "Authorization: Bearer {{access_token}}\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "4cd8c9ed-b47b-45d8-b4f2-5aa495d2aee1",
+					"uid": "0-4cd8c9ed-b47b-45d8-b4f2-5aa495d2aee1",
+					"name": "Get All Employees",
+					"url": "{{service_scheme}}{{service_subdomain}}.{{service_domain}}/api/employees",
+					"description": "Generated from cURL: curl -s http://demo.redacted.com/api/employees -H \"Authorization: Bearer $TOKEN\"",
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": [
+						{
+							"key": "Authorization",
+							"value": "Bearer {{access_token}}"
+						}
+					],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"id": "da0c5061-e03d-4b94-94fa-ce5c0aec32df"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Check if the array has all expected properties\", () => {",
+									"",
+									"// Parse the response body as a JSON array",
+									"let body = pm.response.json();",
+									"",
+									"pm.expect(body).to.be.an('array');",
+									"",
+									"// Iterate through each item in the body array",
+									"body.forEach(item => {",
+									"    // Check if the item is an object",
+									"    pm.expect(item).to.be.an('object');",
+									"    // Check if the required properties exist in the object",
+									"    pm.expect(item).to.have.property('id');",
+									"    pm.expect(item).to.have.property('jobTitle');",
+									"    pm.expect(item).to.have.property('name');",
+									"    pm.expect(item).to.have.property('email');",
+									"});",
+									"\t",
+									"});",
+									"",
+									"pm.test('Check if status is 200', () => {",
+									"    pm.expect(pm.response.code).to.eql(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"id": "f77fd666-92eb-41c1-b876-5c5c60fe8338"
+							}
+						}
+					],
+					"folder": "19f002c5-ef98-44c1-815c-81726b0ac3ce",
+					"responses_order": [],
+					"preRequestScript": null,
+					"tests": "pm.test(\"Check if the array has all expected properties\", () => {\n\n// Parse the response body as a JSON array\nlet body = pm.response.json();\n\npm.expect(body).to.be.an('array');\n\n// Iterate through each item in the body array\nbody.forEach(item => {\n    // Check if the item is an object\n    pm.expect(item).to.be.an('object');\n    // Check if the required properties exist in the object\n    pm.expect(item).to.have.property('id');\n    pm.expect(item).to.have.property('jobTitle');\n    pm.expect(item).to.have.property('name');\n    pm.expect(item).to.have.property('email');\n});\n\t\n});\n\npm.test('Check if status is 200', () => {\n    pm.expect(pm.response.code).to.eql(200);\n});",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+					"headers": "Authorization: Bearer {{access_token}}\n",
+					"pathVariables": {}
+				},
+				{
+					"id": "c50b8e91-e8a1-4b5a-921b-a11f5cb6aea6",
+					"uid": "0-c50b8e91-e8a1-4b5a-921b-a11f5cb6aea6",
+					"name": "Get Employee by ID",
+					"url": "{{service_scheme}}{{service_subdomain}}.{{service_domain}}/api/employees/1234",
+					"description": "Generated from cURL: curl -s http://demo.redacted.com/api/employees/15 -H \"Authorization: Bearer $TOKEN\"",
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": [
+						{
+							"key": "Authorization",
+							"value": "Bearer {{access_token}}"
+						}
+					],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"The response has all properties\", () => {",
+									"",
+									" const responseJson = pm.response.json();",
+									" pm.expect(responseJson.id).to.have.lengthOf(4);",
+									" pm.expect(responseJson.id).to.eql('1234');",
+									"\t",
+									" pm.expect(responseJson.name).to.be.a('string');",
+									" pm.expect(responseJson.name).to.eql('John Doe');",
+									"\t",
+									" pm.expect(responseJson.jobTitle).to.be.a('string');",
+									" pm.expect(responseJson.jobTitle).to.eql('Solutions Engineer');",
+									"",
+									" pm.expect(responseJson.email).to.be.a('string');",
+									" pm.expect(responseJson.email).to.eql('john@email.com');",
+									"",
+									"});",
+									"",
+									"pm.test('Check if status is 200', () => {",
+									"    pm.expect(pm.response.code).to.eql(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"id": "f9874ee4-41dd-47ad-b4bd-f40061f18546"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"id": "041deae1-67a8-4da4-ab15-6d5b49971533"
+							}
+						}
+					],
+					"folder": "19f002c5-ef98-44c1-815c-81726b0ac3ce",
+					"responses_order": [],
+					"preRequestScript": null,
+					"tests": "pm.test(\"The response has all properties\", () => {\n\n const responseJson = pm.response.json();\n pm.expect(responseJson.id).to.have.lengthOf(4);\n pm.expect(responseJson.id).to.eql('1234');\n\t\n pm.expect(responseJson.name).to.be.a('string');\n pm.expect(responseJson.name).to.eql('John Doe');\n\t\n pm.expect(responseJson.jobTitle).to.be.a('string');\n pm.expect(responseJson.jobTitle).to.eql('Solutions Engineer');\n\n pm.expect(responseJson.email).to.be.a('string');\n pm.expect(responseJson.email).to.eql('john@email.com');\n\n});\n\npm.test('Check if status is 200', () => {\n    pm.expect(pm.response.code).to.eql(200);\n});",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "c525036f-d8b5-4a27-bfdb-22fc5ccd1f65",
+					"headers": "Authorization: Bearer {{access_token}}\n",
+					"pathVariables": {}
+				}
+			]
+		}
+	],
+	"environments": [
+		{
+			"id": "1bffa61a-7078-49ea-b163-4a94768d234b",
+			"name": "Development",
+			"values": [
+				{
+					"key": "okta_auth",
+					"value": "redacted",
+					"type": "default",
+					"enabled": true
+				},
+				{
+					"key": "service_scheme",
+					"value": "http://",
+					"type": "default",
+					"enabled": true
+				},
+				{
+					"key": "service_subdomain",
+					"value": "api",
+					"type": "default",
+					"enabled": true
+				},
+				{
+					"key": "service_domain",
+					"value": "redacted.com",
+					"type": "default",
+					"enabled": true
+				},
+				{
+					"key": "access_token",
+					"value": "redacted.redacted.redacted",
+					"type": "default",
+					"enabled": true
+				},
+				{
+					"key": "okta_domain",
+					"value": "dev-redacted.okta.com",
+					"type": "default",
+					"enabled": true
+				},
+				{
+					"key": "okta_scheme",
+					"value": "https://",
+					"type": "default",
+					"enabled": true
+				}
+			]
+		},
+		{
+			"id": "1f111456-3097-4ba0-92cb-d56abb5389c3",
+			"name": "My Workspace - globals",
+			"values": []
+		}
+	],
+	"headerPresets": [],
+	"globals": []
+}

@@ -1,0 +1,18 @@
+# Node.js
+node_modules/
+output/
+npm-debug.log
+yarn-error.log
+.env
+.DS_Store
+dist/
+coverage/
+.idea/
+.vscode/
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+*.rej
