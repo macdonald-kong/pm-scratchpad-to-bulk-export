@@ -1,6 +1,5 @@
 # Node.js
 node_modules/
-output/
 npm-debug.log
 yarn-error.log
 .env
