@@ -53,6 +53,40 @@ try {
     process.exit(1);
 }
 
+// Function to update the schema in the collection file
+function updateSchema(filePath) {
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return;
+        }
+
+        let collection;
+        try {
+            collection = JSON.parse(data);
+        } catch (parseErr) {
+            console.error('Error parsing JSON:', parseErr);
+            return;
+        }
+
+        const oldSchema = "https://schema.getpostman.com/json/collection/v2.0.0/collection.json";
+        const newSchema = "https://schema.postman.com/json/collection/v2.0.0/collection.json";
+
+        if (collection.info && collection.info.schema === oldSchema) {
+            collection.info.schema = newSchema;
+            fs.writeFile(filePath, JSON.stringify(collection, null, 2), 'utf8', (writeErr) => {
+                if (writeErr) {
+                    console.error('Error writing file:', writeErr);
+                } else {
+                    console.log('Schema updated successfully.');
+                }
+            });
+        } else {
+            console.log('Schema is already up to date.');
+        }
+    });
+}
+
 // Convert and save collections
 collection.collections.forEach(function(coll){
     transformer.convert(coll, options, function (error, result) {
@@ -66,10 +100,14 @@ collection.collections.forEach(function(coll){
         while(fs.existsSync(path.resolve(collectionOutDir, name))){
             name = result.info._postman_id + '_' + (++index) + '.json';
         }
-        fs.writeFileSync(path.resolve(collectionOutDir, name), content, 'utf-8');
+        const collectionFilePath = path.resolve(collectionOutDir, name);
+        fs.writeFileSync(collectionFilePath, content, 'utf-8');
 
         // Add collection ID to archive
         archive.collection[result.info._postman_id] = true;
+
+        // Update schema if necessary
+        updateSchema(collectionFilePath);
     });
 });
 
